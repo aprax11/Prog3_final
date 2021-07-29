@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+    <left>
+        <TableView fx:id="tableView" prefHeight="400.0" prefWidth="340.0">
+
+        </TableView>
+    </left>
+    <right>
+        <TableView fx:id="tableView2" prefHeight="400.0" prefWidth="200.0">
+
+        </TableView>
+    </right>
+   <center>
+       <GridPane alignment="center" hgap="10" vgap="10">
+
+
+           <TextField fx:id="positionField" onKeyReleased="#handleKeyReleased" prefHeight="25.0" prefWidth="50.0" GridPane.columnIndex="0" GridPane.rowIndex="12" promptText="Fachnummer" />
+           <Button fx:id="löschenButton" mnemonicParsing="false" onAction="#onButtonClicked" text="Fachnummer löschen" BorderPane.alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+           <Button fx:id="inspectButton" mnemonicParsing="false" onAction="#inspect" text="Fachnummer inzpizieren" prefWidth="150.0" BorderPane.alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+
+
+           <TextField fx:id="herstellerField" onKeyReleased="#handleKeyReleased"  prefHeight="25.0" prefWidth="90.0" GridPane.columnIndex="0" GridPane.rowIndex="1" promptText="Herstellername"/>
+           <Button fx:id="addHersteller" onAction="#addHersteller"  prefHeight="25.0" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="1" text="Name hinzufügen"/>
+           <Button fx:id="removeHersteller" onAction="#removeHersteller"  prefHeight="25.0" prefWidth="120.0" GridPane.columnIndex="2" GridPane.rowIndex="1" text="Name entfernen"/>
+           <Label GridPane.rowIndex="2" text="Kuchenart:"/>
+           <fx:define>
+               <ToggleGroup fx:id="kuchenartGruppe"/>
+           </fx:define>
+           <HBox GridPane.rowIndex="3" GridPane.columnSpan="3" spacing="10">
+               <RadioButton fx:id="obstkuchen" GridPane.columnIndex="0" GridPane.rowIndex="2" text="Obstkuchen" toggleGroup="$kuchenartGruppe"/>
+               <RadioButton fx:id="obsttorte" GridPane.columnIndex="1" GridPane.rowIndex="2" text="Obsttorte" toggleGroup="$kuchenartGruppe"/>
+               <RadioButton fx:id="kremkuchen" GridPane.columnIndex="2" GridPane.rowIndex="2" text="Kremkuchen" toggleGroup="$kuchenartGruppe"/>
+           </HBox>
+           <Button fx:id="kuchenType" mnemonicParsing="false" onAction="#showType" text="nur Kuchentyp zeigen" BorderPane.alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+           <Button fx:id="kuchenNormal" mnemonicParsing="false" onAction="#showAllKuchen" text="alle Kuchen zeigen" BorderPane.alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+           <Button fx:id="loadJOS" mnemonicParsing="false" onAction="#loadJOS" text="loadJOS" prefWidth="150.0" BorderPane.alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+           <Button fx:id="saveJOS" mnemonicParsing="false" onAction="#safeJOS" text="saveJOS" prefWidth="150.0" BorderPane.alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+
+
+           <Label GridPane.rowIndex="4" text="Allergene:"/>
+
+           <HBox GridPane.rowIndex="5" GridPane.columnIndex="0" spacing="10" GridPane.columnSpan="3">
+               <CheckBox fx:id="gluten" text="Gluten"/>
+               <CheckBox fx:id="haselnuss" text="Haselnuss"/>
+               <CheckBox fx:id="sesamen" text="Sesamen"/>
+               <CheckBox fx:id="erdnuss" text="Erdnuss"/>
+           </HBox>
+           <TextField fx:id="durationPicker" onKeyReleased="#handleKeyReleased" GridPane.rowIndex="7" promptText="Haltbarkeit in Tagen"/>
+           <TextField fx:id="preis" onKeyReleased="#handleKeyReleased"  prefHeight="25.0" prefWidth="70.0" GridPane.columnIndex="1" GridPane.rowIndex="7" promptText="Preis"/>
+           <Label GridPane.rowIndex="8" text="Kalorien:"/>
+           <Spinner fx:id="kalorien" GridPane.rowIndex="9" min="0" max="999999" editable="true"/>
+           <TextField fx:id="kuchenName" GridPane.rowIndex="9" GridPane.columnIndex="1" promptText="Kuchen Name"/>
+           <Button fx:id="einfügeButton" mnemonicParsing="false" onAction="#addeKuchen" text="Kuchen adden" BorderPane.alignment="CENTER" GridPane.rowIndex="11" />
+
+       </GridPane>
+
+   </center>
+    <bottom>
+        <GridPane alignment="center" hgap="10" vgap="10">
+            <Button fx:id="vorhandenA" onAction="#displayVorhandenA"  prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.rowIndex="0" text="vorhandene Allergene">
+            </Button>
+            <Button fx:id="fehlendA" onAction="#displayFehlendA"  prefHeight="25.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="0" text="nichtvorhandene Allergene">
+            </Button>
+            <Label fx:id="allergeneLabel" prefHeight="25.0" prefWidth="250.0" GridPane.rowIndex="1">
+            </Label>
+        </GridPane>
+    </bottom>
+</BorderPane>
