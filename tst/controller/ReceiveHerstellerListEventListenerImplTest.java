@@ -9,9 +9,9 @@ class ReceiveHerstellerListEventListenerImplTest {
     @Test
     public void listenerTest() {
         ViewClass mockview = mock(ViewClass.class);
-        ReceiveHerstellerListEventListener listener = new ReceiveHerstellerListEventListenerImpl(mockview);
+        Listener<ReceiveHerstellerListEvent> listener = new ReceiveHerstellerListEventListenerImpl(mockview);
         ReceiveHerstellerListEvent mockEvent = mock(ReceiveHerstellerListEvent.class);
-        listener.onReceiveHerstellerListEvent(mockEvent);
+        listener.onEvent(mockEvent);
 
         verify(mockview).printHersteller(anyMap());
     }

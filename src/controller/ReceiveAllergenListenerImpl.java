@@ -2,7 +2,7 @@ package controller;
 
 import view.ViewClass;
 
-public class ReceiveAllergenListenerImpl implements ReceiveAllergeneListener {
+public class ReceiveAllergenListenerImpl implements Listener<ReceiveAllergeneEvent> {
     private ViewClass view;
 
 
@@ -10,7 +10,7 @@ public class ReceiveAllergenListenerImpl implements ReceiveAllergeneListener {
         this.view = view;
     }
     @Override
-    public void onReceiveAllergeneEvent(ReceiveAllergeneEvent event) {
+    public void onEvent(ReceiveAllergeneEvent event) {
         this.view.printAllergene(event.getList());
     }
 }

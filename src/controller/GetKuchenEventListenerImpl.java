@@ -3,21 +3,21 @@ package controller;
 
 import automat.GanzerKuchen;
 
-public class GetKuchenEventListenerImpl implements GetKuchenListEventListener {
+public class GetKuchenEventListenerImpl implements Listener<GetKuchenListEvent> {
     private GlWrapper gl;
-    private ReceiveKuchenListEventHandler receiveKuchenListEventHandler;
+    private EventHandler<ReceiveKuchenListEvent> receiveKuchenListEventHandler;
 
     public  GetKuchenEventListenerImpl(GlWrapper gl) {
         this.gl = gl;
     }
     @Override
-    public void onGetKuchenEvent(GetKuchenListEvent event) {
+    public void onEvent(GetKuchenListEvent event) {
         GanzerKuchen[] list = this.gl.getGl().listKuchen(event.getCl());
         ReceiveKuchenListEvent event2 = new ReceiveKuchenListEvent(this, list);
         this.receiveKuchenListEventHandler.handle(event2);
     }
 
-    public void setReceiveKuchenListEventHandler(ReceiveKuchenListEventHandler receiveKuchenListEventHandler) {
+    public void setReceiveKuchenListEventHandler(EventHandler<ReceiveKuchenListEvent> receiveKuchenListEventHandler) {
         this.receiveKuchenListEventHandler = receiveKuchenListEventHandler;
     }
 }

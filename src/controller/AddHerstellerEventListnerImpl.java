@@ -7,15 +7,15 @@ import automat.HerstellerImpl;
 import java.util.HashMap;
 
 
-public class AddHerstellerEventListnerImpl implements AddHerstellerEventListener {
+public class AddHerstellerEventListnerImpl implements Listener<AddHerstellerEvent> {
     private GlWrapper gl;
-    ReceiveHerstellerListEventHandler handler;
+    EventHandler<ReceiveHerstellerListEvent> handler;
 
     public AddHerstellerEventListnerImpl(GlWrapper gl) {
         this.gl = gl;
     }
     @Override
-    public void onAddHerstellerEvent(AddHerstellerEvent event) {
+    public void onEvent(AddHerstellerEvent event) {
         String hersteller = event.getHerstellerName();
 
 
@@ -34,7 +34,7 @@ public class AddHerstellerEventListnerImpl implements AddHerstellerEventListener
 
         }
     }
-    public void setHandler(ReceiveHerstellerListEventHandler handler) {
+    public void setHandler(EventHandler<ReceiveHerstellerListEvent> handler) {
         this.handler = handler;
     }
 }

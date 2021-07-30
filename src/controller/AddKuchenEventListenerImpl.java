@@ -1,7 +1,7 @@
 package controller;
 
 
-public class AddKuchenEventListenerImpl implements AddKuchenEventListener {
+public class AddKuchenEventListenerImpl implements Listener<AddKuchenEvent> {
     private GlWrapper gl;
 
     public AddKuchenEventListenerImpl(GlWrapper gl) {
@@ -9,7 +9,7 @@ public class AddKuchenEventListenerImpl implements AddKuchenEventListener {
     }
 
     @Override
-    public void onAddKuchenEvent(AddKuchenEvent event) {
+    public void onEvent(AddKuchenEvent event) {
 
         this.gl.getGl().addKuchen(event.getList(), event.getContainer());
 

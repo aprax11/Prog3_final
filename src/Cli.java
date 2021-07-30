@@ -3,7 +3,7 @@ import controller.GetKuchenEventListenerImpl;
 import automat.Beobachter;
 import controller.*;
 import view.*;
-import controller.ReceiveKuchenListEventListener;
+
 
 public class Cli {
 
@@ -23,34 +23,34 @@ public class Cli {
         Beobachter allergenBeobachter = new AllergenBeobachter(geschäftsLogic);
         Beobachter kapazitätBeobachter = new KapazitätBeobachter(geschäftsLogic);
 
-        JosEventHandler josEventHandler = new JosEventHandler();
+        EventHandler<JosEvent> josEventHandler = new EventHandler<>();
         JosListenerImpl josListener = new JosListenerImpl(gl);
 
-        AddHerstellerEventHandler addHerstellerEventHandler = new AddHerstellerEventHandler();
+        EventHandler addHerstellerEventHandler = new EventHandler();
         AddHerstellerEventListnerImpl addHerstellerEventListener = new AddHerstellerEventListnerImpl(gl);
 
-        ReceiveHerstellerListEventHandler receiveHerstellerListEventHandler = new ReceiveHerstellerListEventHandler();
-        ReceiveHerstellerListEventListener receiveHerstellerListEventListener = new ReceiveHerstellerListEventListenerImpl(view);
+        EventHandler<ReceiveHerstellerListEvent> receiveHerstellerListEventHandler = new EventHandler<>();
+        Listener<ReceiveHerstellerListEvent> receiveHerstellerListEventListener = new ReceiveHerstellerListEventListenerImpl(view);
 
-        AddKuchenEventHandler addKuchenEventHandler = new AddKuchenEventHandler();
-        AddKuchenEventListener addKuchenEventListener = new AddKuchenEventListenerImpl(gl);
+        EventHandler<AddKuchenEvent> addKuchenEventHandler = new EventHandler<>();
+        Listener<AddKuchenEvent> addKuchenEventListener = new AddKuchenEventListenerImpl(gl);
 
-        ReceiveKuchenListEventHandler receiveKuchenListEventHandler = new ReceiveKuchenListEventHandler();
-        ReceiveKuchenListEventListener receiveKuchenListEventListener = new ReceiveKuchenListEventListnenerImpl(view);
+        EventHandler<ReceiveKuchenListEvent> receiveKuchenListEventHandler = new EventHandler<>();
+        Listener<ReceiveKuchenListEvent> receiveKuchenListEventListener = new ReceiveKuchenListEventListnenerImpl(view);
 
-        GetKuchenListEventHandler getKuchenListEventHandler = new GetKuchenListEventHandler();
+        EventHandler<GetKuchenListEvent> getKuchenListEventHandler = new EventHandler<>();
         GetKuchenEventListenerImpl getKuchenListEventListener = new GetKuchenEventListenerImpl(gl);
 
-        DeleteKuchenEventHandler deleteKuchenEventHandler = new DeleteKuchenEventHandler();
-        DeleteKuchenEventListener deleteKuchenEventListener = new DeleteKuchenEventListenerImpl(gl);
+        EventHandler<DeleteKuchenEvent> deleteKuchenEventHandler = new EventHandler<>();
+        Listener<DeleteKuchenEvent> deleteKuchenEventListener = new DeleteKuchenEventListenerImpl(gl);
 
-        GetAllergenHandler getAllergenHandler = new GetAllergenHandler();
+        EventHandler<GetAllergeneEvent> getAllergenHandler = new EventHandler<>();
         GetAllergenListenerInpl getAllergenListener = new GetAllergenListenerInpl(gl);
 
-        ReceiveAllergeneHandler receiveAllergeneHandler = new ReceiveAllergeneHandler();
+        EventHandler<ReceiveAllergeneEvent> receiveAllergeneHandler = new EventHandler<>();
         getAllergenListener.setHandler(receiveAllergeneHandler);
 
-        ReceiveAllergeneListener receiveAllergeneListener = new ReceiveAllergenListenerImpl(view);
+        Listener<ReceiveAllergeneEvent> receiveAllergeneListener = new ReceiveAllergenListenerImpl(view);
 
 
         CliClass cli = new CliClass();

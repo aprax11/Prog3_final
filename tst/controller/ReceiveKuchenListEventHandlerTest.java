@@ -15,16 +15,16 @@ import static org.mockito.Mockito.verify;
 class ReceiveKuchenListEventHandlerTest {
     @Test
     public void addListenerTest() {
-        ReceiveHerstellerListEventHandler handler = new ReceiveHerstellerListEventHandler();
-        ReceiveHerstellerListEventListener mockListener = mock(ReceiveHerstellerListEventListenerImpl.class);
+        EventHandler<ReceiveHerstellerListEvent> handler = new EventHandler<>();
+        Listener<ReceiveHerstellerListEvent> mockListener = mock(ReceiveHerstellerListEventListenerImpl.class);
         handler.add(mockListener);
 
         final Field field;
-        ArrayList<AddHerstellerEventListener> list = null;
+        ArrayList<Listener<AddHerstellerEvent>> list = null;
         try {
             field = handler.getClass().getDeclaredField("list");
             field.setAccessible(true);
-            list = (ArrayList<AddHerstellerEventListener>) field.get(handler);
+            list = (ArrayList<Listener<AddHerstellerEvent>>) field.get(handler);
             assertTrue(list.contains(mockListener));
         } catch (NoSuchFieldException | IllegalAccessException e) {
             fail();
@@ -33,17 +33,17 @@ class ReceiveKuchenListEventHandlerTest {
 
     @Test
     public void deleteListenerTest() {
-        ReceiveHerstellerListEventHandler handler = new ReceiveHerstellerListEventHandler();
-        ReceiveHerstellerListEventListener mockListener = mock(ReceiveHerstellerListEventListenerImpl.class);
+        EventHandler<ReceiveKuchenListEvent> handler = new EventHandler<>();
+        Listener<ReceiveKuchenListEvent> mockListener = mock(ReceiveKuchenListEventListnenerImpl.class);
         handler.add(mockListener);
         handler.remove(mockListener);
 
         final Field field;
-        ArrayList<AddHerstellerEventListener> list = null;
+        ArrayList<Listener<AddHerstellerEvent>> list = null;
         try {
             field = handler.getClass().getDeclaredField("list");
             field.setAccessible(true);
-            list = (ArrayList<AddHerstellerEventListener>) field.get(handler);
+            list = (ArrayList<Listener<AddHerstellerEvent>>) field.get(handler);
             assertFalse(list.contains(mockListener));
         } catch (NoSuchFieldException | IllegalAccessException e) {
             fail();
@@ -52,13 +52,12 @@ class ReceiveKuchenListEventHandlerTest {
 
     @Test
     public void handleListenerTest() {
-        ReceiveHerstellerListEventHandler handler = new ReceiveHerstellerListEventHandler();
-        ReceiveHerstellerListEventListener mockListener = mock(ReceiveHerstellerListEventListenerImpl.class);
+        EventHandler<ReceiveHerstellerListEvent> handler = new EventHandler<>();
+        Listener<ReceiveHerstellerListEvent> mockListener = mock(ReceiveHerstellerListEventListenerImpl.class);
         ReceiveHerstellerListEvent mockEvent = mock(ReceiveHerstellerListEvent.class);
         handler.add(mockListener);
         handler.handle(mockEvent);
 
-        verify(mockListener).onReceiveHerstellerListEvent(mockEvent);
+        verify(mockListener).onEvent(mockEvent);
     }
-
 }

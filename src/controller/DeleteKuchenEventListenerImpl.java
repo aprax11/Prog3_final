@@ -1,7 +1,7 @@
 package controller;
 
 
-public class DeleteKuchenEventListenerImpl implements DeleteKuchenEventListener {
+public class DeleteKuchenEventListenerImpl implements Listener<DeleteKuchenEvent> {
 
     private GlWrapper gl;
 
@@ -10,7 +10,7 @@ public class DeleteKuchenEventListenerImpl implements DeleteKuchenEventListener 
     }
 
     @Override
-    public void onDeleteKuchenEvent(DeleteKuchenEvent event) {
+    public void onEvent(DeleteKuchenEvent event) {
         if (!event.getUpdate()) {
             this.gl.getGl().löscheKuchen(event.getPosition());
         }else if(event.getUpdate()) {

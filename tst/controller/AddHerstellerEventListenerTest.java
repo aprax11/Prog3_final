@@ -23,8 +23,8 @@ public class AddHerstellerEventListenerTest {
     public void addHerstellerListenerTest() {
         GeschäftslogikImpl mockGl = mock(GeschäftslogikImpl.class);
         GlWrapper mockWrapper = mock(GlWrapper.class);
-        AddHerstellerEventHandler handler = new AddHerstellerEventHandler();
-        AddHerstellerEventListener listener = new AddHerstellerEventListnerImpl(mockWrapper);
+        EventHandler handler = new EventHandler();
+        Listener<AddHerstellerEvent> listener = new AddHerstellerEventListnerImpl(mockWrapper);
         final ArgumentCaptor<HerstellerImpl> herstellerArgumentCaptor = ArgumentCaptor.forClass(HerstellerImpl.class);
 
         when(mockWrapper.getGl()).thenReturn(mockGl);
@@ -41,8 +41,8 @@ public class AddHerstellerEventListenerTest {
     public void deleteHerstellerListenerTest() throws InterruptedException {
         GeschäftslogikImpl mockGl = mock(GeschäftslogikImpl.class);
         GlWrapper mockWrapper = mock(GlWrapper.class);
-        AddHerstellerEventHandler handler = new AddHerstellerEventHandler();
-        AddHerstellerEventListener listener = new AddHerstellerEventListnerImpl(mockWrapper);
+        EventHandler handler = new EventHandler();
+        Listener<AddHerstellerEvent> listener = new AddHerstellerEventListnerImpl(mockWrapper);
 
         when(mockWrapper.getGl()).thenReturn(mockGl);
 
@@ -60,8 +60,8 @@ public class AddHerstellerEventListenerTest {
 
         when(mockWrapper.getGl()).thenReturn(mockGl);
 
-        ReceiveHerstellerListEventHandler mockReceiveHandler = mock(ReceiveHerstellerListEventHandler.class);
-        AddHerstellerEventHandler handler = new AddHerstellerEventHandler();
+        EventHandler<ReceiveHerstellerListEvent> mockReceiveHandler = mock(EventHandler.class);
+        EventHandler handler = new EventHandler();
         AddHerstellerEventListnerImpl listener = new AddHerstellerEventListnerImpl(mockWrapper);
         listener.setHandler(mockReceiveHandler);
         AddHerstellerEvent event = new AddHerstellerEvent(this, null, false, true);
@@ -78,8 +78,8 @@ public class AddHerstellerEventListenerTest {
 
         when(mockWrapper.getGl()).thenReturn(mockGl);
 
-        ReceiveHerstellerListEventHandler mockReceiveHandler = mock(ReceiveHerstellerListEventHandler.class);
-        AddHerstellerEventHandler handler = new AddHerstellerEventHandler();
+        EventHandler<ReceiveHerstellerListEvent> mockReceiveHandler = mock(EventHandler.class);
+        EventHandler handler = new EventHandler();
         AddHerstellerEventListnerImpl listener = new AddHerstellerEventListnerImpl(mockWrapper);
         listener.setHandler(mockReceiveHandler);
         AddHerstellerEvent event = new AddHerstellerEvent(this, null, false, true);

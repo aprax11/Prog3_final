@@ -3,7 +3,7 @@ package controller;
 import automat.GeschäftslogikImpl;
 import persistence.Jos;
 
-public class JosListenerImpl implements JosEventListener {
+public class JosListenerImpl implements Listener<JosEvent> {
     private GlWrapper gl;
 
     public JosListenerImpl(GlWrapper gl) {
@@ -11,7 +11,7 @@ public class JosListenerImpl implements JosEventListener {
     }
 
     @Override
-    public void onJosEvent(JosEvent event) {
+    public void onEvent(JosEvent event) {
         if(event.getSafe()) {
             Jos.serialize("SafeGl", this.gl.getGl());
         }else if(!event.getSafe()) {

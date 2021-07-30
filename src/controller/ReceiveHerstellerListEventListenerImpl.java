@@ -2,14 +2,14 @@ package controller;
 
 import view.ViewClass;
 
-public class ReceiveHerstellerListEventListenerImpl implements ReceiveHerstellerListEventListener {
+public class ReceiveHerstellerListEventListenerImpl implements Listener<ReceiveHerstellerListEvent> {
     private ViewClass view;
 
     public ReceiveHerstellerListEventListenerImpl(ViewClass view) {
         this.view = view;
     }
     @Override
-    public void onReceiveHerstellerListEvent(ReceiveHerstellerListEvent event) {
+    public void onEvent(ReceiveHerstellerListEvent event) {
         this.view.printHersteller(event.getHerstellerList());
     }
 }

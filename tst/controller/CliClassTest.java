@@ -18,7 +18,7 @@ class CliClassTest {
     public void einfügeHerstellerTest() {
         final ArgumentCaptor<AddHerstellerEvent> eventArgumentCaptor = ArgumentCaptor.forClass(AddHerstellerEvent.class);
         CliClass cli = new CliClass();
-        AddHerstellerEventHandler mockHandler = mock(AddHerstellerEventHandler.class);
+        EventHandler mockHandler = mock(EventHandler.class);
         cli.setHerstellerEventHandler(mockHandler);
 
         cli.handeln("Paul");
@@ -32,7 +32,7 @@ class CliClassTest {
     public void entferneHerstellerTest() {
         final ArgumentCaptor<AddHerstellerEvent> eventArgumentCaptor = ArgumentCaptor.forClass(AddHerstellerEvent.class);
         CliClass cli = new CliClass();
-        AddHerstellerEventHandler mockHandler = mock(AddHerstellerEventHandler.class);
+        EventHandler mockHandler = mock(EventHandler.class);
         cli.setHerstellerEventHandler(mockHandler);
 
         final Field field;
@@ -55,7 +55,7 @@ class CliClassTest {
     public void zeigeHerstellerTest() {
         final ArgumentCaptor<AddHerstellerEvent> eventArgumentCaptor = ArgumentCaptor.forClass(AddHerstellerEvent.class);
         CliClass cli = new CliClass();
-        AddHerstellerEventHandler mockHandler = mock(AddHerstellerEventHandler.class);
+        EventHandler mockHandler = mock(EventHandler.class);
         cli.setHerstellerEventHandler(mockHandler);
 
         final Field field;

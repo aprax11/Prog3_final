@@ -8,30 +8,30 @@ import java.util.*;
 
 public class CliClass {
     private String lastCommand = ":c";
-    private AddKuchenEventHandler kuchenEventHandler;
-    private AddHerstellerEventHandler herstellerEventHandler;
-    private DeleteKuchenEventHandler deleteKuchenEventHandler;
-    private GetKuchenListEventHandler getKuchenListEventHandler;
-    private GetAllergenHandler getAllergenHandler;
-    private JosEventHandler josHandler;
+    private EventHandler<AddKuchenEvent> kuchenEventHandler;
+    private EventHandler<AddHerstellerEvent> herstellerEventHandler;
+    private EventHandler<DeleteKuchenEvent> deleteKuchenEventHandler;
+    private EventHandler<GetKuchenListEvent> getKuchenListEventHandler;
+    private EventHandler<GetAllergeneEvent> getAllergenHandler;
+    private EventHandler<JosEvent> josHandler;
 
-    public void setAllergenHandler(GetAllergenHandler handler) {
+    public void setAllergenHandler(EventHandler<GetAllergeneEvent> handler) {
         this.getAllergenHandler = handler;
     }
 
-    public void setKuchenEventHandler(AddKuchenEventHandler kuchenEventHandler) {
+    public void setKuchenEventHandler(EventHandler<AddKuchenEvent> kuchenEventHandler) {
         this.kuchenEventHandler = kuchenEventHandler;
     }
-    public void setHerstellerEventHandler(AddHerstellerEventHandler herstellerEventHandler) {
+    public void setHerstellerEventHandler(EventHandler<AddHerstellerEvent> herstellerEventHandler) {
         this.herstellerEventHandler = herstellerEventHandler;
     }
-    public void setDeleteKuchenEventHandler(DeleteKuchenEventHandler deleteKuchenEventHandler) {
+    public void setDeleteKuchenEventHandler(EventHandler<DeleteKuchenEvent> deleteKuchenEventHandler) {
         this.deleteKuchenEventHandler = deleteKuchenEventHandler;
     }
-    public void setGetKuchenListEventHandler(GetKuchenListEventHandler getKuchenListEventHandler) {
+    public void setGetKuchenListEventHandler(EventHandler<GetKuchenListEvent> getKuchenListEventHandler) {
         this.getKuchenListEventHandler = getKuchenListEventHandler;
     }
-    public void setJosEventHandler(JosEventHandler handler) {
+    public void setJosEventHandler(EventHandler<JosEvent> handler) {
         this.josHandler = handler;
     }
     private boolean checkString(String name) {

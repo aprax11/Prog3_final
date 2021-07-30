@@ -2,14 +2,14 @@ package controller;
 
 import view.ViewClass;
 
-public class ReceiveKuchenListEventListnenerImpl implements ReceiveKuchenListEventListener {
+public class ReceiveKuchenListEventListnenerImpl implements Listener<ReceiveKuchenListEvent> {
     private ViewClass view;
 
     public ReceiveKuchenListEventListnenerImpl(ViewClass view) {
         this.view = view;
     }
     @Override
-    public void onReceiveKuchenListEvent(ReceiveKuchenListEvent event) {
+    public void onEvent(ReceiveKuchenListEvent event) {
         this.view.printList(event.getList());
     }
 }
